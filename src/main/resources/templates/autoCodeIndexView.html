@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Auto-Code-Plugins</title>
+
+    <!--LayUi-->
+    <link rel="stylesheet" href="/webjars/layui/2.2.6/css/layui.css">
+    <script src="/webjars/layui/2.2.6/layui.all.js"></script>
+
+    <!--AngularJs-->
+    <script src="/webjars/angularjs/1.2.9/angular.js"></script>
+    <script src="../js/base.js"></script>
+    <script src="../js/service/indexService.js"></script>
+    <script src="../js/controller/indexController.js"></script>
+</head>
+<body ng-app="autocode" ng-controller="indexController" ng-init="getLoginUser();">
+    <div class="layui-row">
+        <div class="layui-col-md10 layui-col-md-offset1">
+            <!--页头-->
+            <div class="layui-row">
+                <ul class="layui-nav layui-bg-cyan">
+                    <li class="layui-nav-item"><a href=""><b style="color: white"><i class="layui-icon" style="color: white;font-size: 15px">&#xe631;</i> Auto-Codes-Plugins</b></a></li>
+                    <!--<li class="layui-nav-item layui-this"><a href="">产品</a></li>-->
+                    <!--<li class="layui-nav-item"><a href="">大数据</a></li>-->
+                    <!--<li class="layui-nav-item">-->
+                        <!--<a href="javascript:;">解决方案</a>-->
+                        <!--<dl class="layui-nav-child">-->
+                            <!--<dd><a href="">移动模块</a></dd>-->
+                            <!--<dd><a href="">后台模版</a></dd>-->
+                            <!--<dd><a href="">电商平台</a></dd>-->
+                        <!--</dl>-->
+                    <!--</li>-->
+                    <!--<li class="layui-nav-item"><a href="">社区</a></li>-->
+                </ul>
+            </div>
+            <div class="layui-row" style="margin-top: 5px">
+                <!--侧边栏开始-->
+                <div class="layui-col-md2">
+                    <ul class="layui-nav layui-nav-tree layui-inline layui-bg-cyan" lay-filter="demo" style="margin-right: 10px;">
+                        <li class="layui-nav-item" style="text-align: center"><i class="layui-icon">&#xe612;</i> {{loginUser}}</li>
+                        <li class="layui-nav-item layui-nav-itemed">
+                            <a href="javascript:;">代码生成</a>
+                            <dl class="layui-nav-child">
+                                <dd><a href="">手动添加</a></dd>
+                                <dd><a href="">Mybatis逆向工程</a></dd>
+                            </dl>
+                        </li>
+                        <li class="layui-nav-item">
+                            <a href="javascript:;">Json工具</a>
+                            <dl class="layui-nav-child">
+                                <dd><a href="">Json格式化</a></dd>
+                            </dl>
+                        </li>
+                        <li class="layui-nav-item"><a href="#">社区</a></li>
+                        <li class="layui-nav-item"><a href="#">敬请期待</a></li>
+                    </ul>
+                </div>
+                <!--侧边栏结束-->
+                <!--内容添加开始-->
+                <div class="layui-col-md10">
+
+
+
+                </div>
+                <!--内容添加结束-->
+            </div>
+        </div>
+    </div>
+</body>
+</html>
