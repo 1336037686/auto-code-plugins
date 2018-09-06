@@ -15,7 +15,7 @@ import java.util.Map;
  * @date 2018-09-06 0:41
  */
 
-public class FreeMarkerUtils {
+public class FreeMarkerUtil {
 
     /**
      * 生成页面

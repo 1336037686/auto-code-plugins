@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <!--自动生成Pojo内容开始-->
+    <div style="padding: 20px; background-color: #F2F2F2;"  th:fragment="pojoGenerate">
+        <div class="layui-row layui-col-space15">
+            <div class="layui-col-md12">
+                <div class="layui-card">
+                    <div class="layui-card-header">Pojo</div>
+                    <div class="layui-card-body">
+                        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                            <legend>基本信息</legend>
+                        </fieldset>
+
+                        <form class="layui-form" action="">
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">生成路径</label>
+                                <div class="layui-input-block">
+                                    <input type="text" lay-verify="required" placeholder="请输入地址（默认:c://）" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">包名</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入包名(例如：com.fjut)" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">类名</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入类名(例如：HelloWorld)" class="layui-input">
+                                </div>
+                            </div>
+
+                            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                                <legend>字段属性</legend>
+                            </fieldset>
+                            <div class="layui-form-item">
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="layui-btn layui-btn-sm">添加字段</button>
+                            </div>
+
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">字段</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" lay-verify="title" autocomplete="off" placeholder="" class="layui-input">
+                                </div>
+                                <div class="layui-input-inline">
+                                    <select name="interest" lay-filter="aihao">
+                                        <option value="String">String</option>
+                                        <option value="Integer">Integer</option>
+                                        <option value="Double">Double</option>
+                                        <option value="Long">Long</option>
+                                        <option value="boolean">boolean</option>
+                                        <option value="Char">char</option>
+                                        <option value="Map">Map</option>
+                                        <option value="List">List</option>
+                                        <option value="Set">Set</option>
+                                    </select>
+                                </div>
+                                <input type="checkbox" name="getter" title="getter">
+                                <input type="checkbox" name="setter" title="setter">
+                            </div>
+
+                            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                                <legend>扩展方法</legend>
+                            </fieldset>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">main方法</label>
+                                <div class="layui-input-block">
+                                    <input type="checkbox" checked="" name="open" lay-skin="switch" lay-filter="switchTest" lay-text="ON|OFF">
+                                </div>
+                            </div>
+
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">toString方法</label>
+                                <div class="layui-input-block">
+                                    <input type="checkbox" checked="" name="open" lay-skin="switch" lay-filter="switchTest" lay-text="ON|OFF">
+                                </div>
+                            </div>
+
+                            <!--<fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">-->
+                            <!--<legend>内容编写</legend>-->
+                            <!--</fieldset>-->
+                            <!--<div class="layui-form-item layui-form-text">-->
+                            <!--<label class="layui-form-label">Main</label>-->
+                            <!--<div class="layui-input-block">-->
+                            <!--<textarea placeholder="请输入Main方法内容" class="layui-textarea"></textarea>-->
+                            <!--</div>-->
+                            <!--</div>-->
+                            <!--<div class="layui-form-item layui-form-text">-->
+                            <!--<label class="layui-form-label">其他</label>-->
+                            <!--<div class="layui-input-block">-->
+                            <!--<textarea placeholder="请输入其他方法内容" class="layui-textarea"></textarea>-->
+                            <!--</div>-->
+                            <!--</div>-->
+
+                            <div class="layui-form-item">
+                                <div class="layui-input-block">
+                                    <button class="layui-btn" lay-submit="" lay-filter="demo1">生成</button>
+                                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--自动生成Pojo内容结束-->
+</body>
+</html>

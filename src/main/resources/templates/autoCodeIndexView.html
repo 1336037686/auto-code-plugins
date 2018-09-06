@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Auto-Code-Plugins</title>
@@ -12,6 +12,7 @@
     <script src="/webjars/angularjs/1.2.9/angular.js"></script>
     <script src="../js/base.js"></script>
     <script src="../js/service/indexService.js"></script>
+    <script src="../js/service/codeGenerateService.js"></script>
     <script src="../js/controller/indexController.js"></script>
 </head>
 <body ng-app="autocode" ng-controller="indexController" ng-init="getLoginUser();">
@@ -58,14 +59,16 @@
                 </div>
                 <!--侧边栏结束-->
                 <!--内容添加开始-->
-                <div class="layui-col-md10">
-
-
-
-                </div>
+                <div class="layui-col-md10" th:insert="~{code-pojoGenerate::pojoGenerate}"></div>
                 <!--内容添加结束-->
             </div>
         </div>
     </div>
+<script>
+    layui.use('form', function() {
+        var form = layui.form;
+        form.render();
+    });
+</script>
 </body>
 </html>
