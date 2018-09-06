@@ -4,13 +4,11 @@ import com.lgxtvt.common.template.UpperInitials;
 import com.lgxtvt.common.utils.FreeMarkerUtil;
 import com.lgxtvt.common.utils.PathUtil;
 import com.lgxtvt.modules.app.entity.Message;
-import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.Date;
 import java.util.Map;
 
@@ -50,11 +48,10 @@ public class CodeGenerateController {
                 basePath.mkdirs();
             }
             path = path + (String)dataMap.get("className") + ".java";
-            File file = ResourceUtils.getFile("classpath:ftl");
-            String absolutePath = file.getAbsolutePath();
-            FreeMarkerUtil.generatePojoPage(absolutePath,"pojoTemplate.ftl", dataMap, path);
+            //解决了打成jar包后访问不到ftl模板的问题
+            FreeMarkerUtil.generatePojoPage("/ftl","pojoTemplate.ftl", dataMap, path);
             return new Message("生成成功",true);
-        } catch (FileNotFoundException e) {
+        } catch (Exception e) {
             e.printStackTrace();
             return new Message("生成失败",false);
         }

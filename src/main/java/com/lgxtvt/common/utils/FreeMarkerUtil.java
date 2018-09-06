@@ -4,7 +4,6 @@ import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateExceptionHandler;
 
-import java.io.File;
 import java.io.FileWriter;
 import java.io.Writer;
 import java.util.Map;
@@ -27,7 +26,8 @@ public class FreeMarkerUtil {
     public static void generatePojoPage(String ftlPath,String ftlName,Map<String, Object> dataModel,String path){
         try {
             Configuration cfg = new Configuration(Configuration.VERSION_2_3_28);
-            cfg.setDirectoryForTemplateLoading(new File(ftlPath));
+            //cfg.setDirectoryForTemplateLoading(new File(ftlPath));
+            cfg.setClassForTemplateLoading(FreeMarkerUtil.class, ftlPath);
             cfg.setDefaultEncoding("UTF-8");
             cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
             Template temp = cfg.getTemplate(ftlName);
