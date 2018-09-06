@@ -19,11 +19,13 @@ public class ${className} {
 
     }
 
+    <#if (attributes?size>0)>
     public ${className}(<#list attributes as attr>${attr.attrType} ${attr.attrName}<#if (attr_has_next?c) != 'false' >, </#if></#list>) {
     <#list attributes as attr>
         this.${attr.attrName} = ${attr.attrName};
     </#list>
     }
+    </#if>
 
 
     <#list attributes as attr>

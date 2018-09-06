@@ -7,6 +7,7 @@
 <body>
     <!--自动生成Pojo内容开始-->
     <div style="padding: 20px; background-color: #F2F2F2;"  th:fragment="pojoGenerate">
+        {{codeEntity}}
         <div class="layui-row layui-col-space15">
             <div class="layui-col-md12">
                 <div class="layui-card">
@@ -20,19 +21,19 @@
                             <div class="layui-form-item">
                                 <label class="layui-form-label">生成路径</label>
                                 <div class="layui-input-block">
-                                    <input type="text" lay-verify="required" placeholder="请输入地址（默认:c://）" autocomplete="off" class="layui-input">
+                                    <input type="text" lay-verify="required" placeholder="请输入地址（默认:c://）" autocomplete="off" class="layui-input" ng-model="codeEntity.basePath">
                                 </div>
                             </div>
                             <div class="layui-form-item">
                                 <label class="layui-form-label">包名</label>
                                 <div class="layui-input-block">
-                                    <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入包名(例如：com.fjut)" class="layui-input">
+                                    <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入包名(例如：com.fjut)" class="layui-input" ng-model="codeEntity.packagePosition">
                                 </div>
                             </div>
                             <div class="layui-form-item">
                                 <label class="layui-form-label">类名</label>
                                 <div class="layui-input-block">
-                                    <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入类名(例如：HelloWorld)" class="layui-input">
+                                    <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入类名(例如：HelloWorld)" class="layui-input" ng-model="codeEntity.className">
                                 </div>
                             </div>
 
@@ -50,7 +51,7 @@
                                 </div>
                                 <div class="layui-input-inline">
                                     <select name="interest" lay-filter="aihao">
-                                        <option value="String">String</option>
+                                        <option value="String" ng-click="generatePojoCode()">String</option>
                                         <option value="Integer">Integer</option>
                                         <option value="Double">Double</option>
                                         <option value="Long">Long</option>
@@ -61,8 +62,9 @@
                                         <option value="Set">Set</option>
                                     </select>
                                 </div>
-                                <input type="checkbox" name="getter" title="getter">
-                                <input type="checkbox" name="setter" title="setter">
+                                <input type="checkbox" name="getter" title="getter" lay-filter="getterFilter">
+                                <input type="checkbox" name="setter" title="setter" lay-filter="setterFilter">
+                                <button class="layui-btn layui-btn-danger layui-btn-sm">删除</button>
                             </div>
 
                             <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
@@ -70,15 +72,20 @@
                             </fieldset>
                             <div class="layui-form-item">
                                 <label class="layui-form-label">main方法</label>
-                                <div class="layui-input-block">
-                                    <input type="checkbox" checked="" name="open" lay-skin="switch" lay-filter="switchTest" lay-text="ON|OFF">
+                                <div class="layui-input-inline">
+                                    <select name="interest" lay-filter="mainFilter">
+                                        <option value="1" selected>是</option>
+                                        <option value="0">否</option>
+                                    </select>
                                 </div>
                             </div>
-
                             <div class="layui-form-item">
                                 <label class="layui-form-label">toString方法</label>
-                                <div class="layui-input-block">
-                                    <input type="checkbox" checked="" name="open" lay-skin="switch" lay-filter="switchTest" lay-text="ON|OFF">
+                                <div class="layui-input-inline">
+                                    <select name="interest" lay-filter="toStringFilter">
+                                        <option value="1">是</option>
+                                        <option value="0">否</option>
+                                    </select>
                                 </div>
                             </div>
 
@@ -100,7 +107,7 @@
 
                             <div class="layui-form-item">
                                 <div class="layui-input-block">
-                                    <button class="layui-btn" lay-submit="" lay-filter="demo1">生成</button>
+                                    <button class="layui-btn" lay-filter="demo1" ng-click="generatePojoCode()">生成</button>
                                     <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                                 </div>
                             </div>

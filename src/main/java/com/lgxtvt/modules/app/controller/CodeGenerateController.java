@@ -3,6 +3,7 @@ package com.lgxtvt.modules.app.controller;
 import com.lgxtvt.common.template.UpperInitials;
 import com.lgxtvt.common.utils.FreeMarkerUtil;
 import com.lgxtvt.common.utils.PathUtil;
+import com.lgxtvt.modules.app.entity.Message;
 import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,8 +38,8 @@ public class CodeGenerateController {
      * }
      */
 
-    @RequestMapping("/getAttr")
-    public void getAttr(@RequestBody Map dataMap){
+    @RequestMapping("/generatePojoCode")
+    public Message generatePojoCode(@RequestBody Map dataMap){
         dataMap.put("nowDateTime",new Date());
         dataMap.put("UpperInitials",new UpperInitials());
         try {
@@ -52,9 +53,10 @@ public class CodeGenerateController {
             File file = ResourceUtils.getFile("classpath:ftl");
             String absolutePath = file.getAbsolutePath();
             FreeMarkerUtil.generatePojoPage(absolutePath,"pojoTemplate.ftl", dataMap, path);
+            return new Message("生成成功",true);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
+            return new Message("生成失败",false);
         }
-        System.out.println(dataMap);
     }
 }
