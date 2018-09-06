@@ -1,4 +1,6 @@
+<#if packagePosition != ''>
 package ${packagePosition};
+</#if>
 
 
 <#list importPackages as package>
@@ -29,13 +31,13 @@ public class ${className} {
 
 
     <#list attributes as attr>
-    <#if attr.getterKey == 1>
+    <#if attr.getterKey == "1">
     public ${attr.attrType} get<@UpperInitials value=attr.attrName />() {
         return ${attr.attrName};
     }
     </#if>
 
-    <#if attr.setterKey == 1>
+    <#if attr.setterKey == "1">
     public void set<@UpperInitials value=attr.attrName />(${attr.attrType} ${attr.attrName}) {
         this.${attr.attrName} = ${attr.attrName};
     }

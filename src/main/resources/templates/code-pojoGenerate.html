@@ -41,30 +41,31 @@
                                 <legend>字段属性</legend>
                             </fieldset>
                             <div class="layui-form-item">
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="layui-btn layui-btn-sm">添加字段</button>
+                                <blockquote class="layui-elem-quote layui-quote-nm">
+                                    注意:<br>
+                                    字段从左到右分别为<b>(字段名，字段属性, Getter, Setter)</b><br>
+                                    Getter,Setter只能填0或1<b>(0代表不生成,1代表生成)</b>.
+                                </blockquote>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="layui-btn layui-btn-sm" ng-click="addAttr()">添加字段</button>
                             </div>
 
-                            <div class="layui-form-item">
+
+                            <div class="layui-form-item" ng-repeat="attr in codeEntity.attributes">
                                 <label class="layui-form-label">字段</label>
                                 <div class="layui-input-inline">
-                                    <input type="text" lay-verify="title" autocomplete="off" placeholder="" class="layui-input">
+                                    <input type="text" lay-verify="title" autocomplete="off" placeholder="" class="layui-input" ng-model="attr.attrName">
                                 </div>
                                 <div class="layui-input-inline">
-                                    <select name="interest" lay-filter="aihao">
-                                        <option value="String" ng-click="generatePojoCode()">String</option>
-                                        <option value="Integer">Integer</option>
-                                        <option value="Double">Double</option>
-                                        <option value="Long">Long</option>
-                                        <option value="boolean">boolean</option>
-                                        <option value="Char">char</option>
-                                        <option value="Map">Map</option>
-                                        <option value="List">List</option>
-                                        <option value="Set">Set</option>
-                                    </select>
+                                    <input type="text" lay-verify="title" autocomplete="off" placeholder="字段类型" class="layui-input" ng-model="attr.attrType">
                                 </div>
-                                <input type="checkbox" name="getter" title="getter" lay-filter="getterFilter">
-                                <input type="checkbox" name="setter" title="setter" lay-filter="setterFilter">
-                                <button class="layui-btn layui-btn-danger layui-btn-sm">删除</button>
+                                <label class="layui-form-label">Getter/Setter</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" lay-verify="title" autocomplete="off" placeholder="getter（1/0）" class="layui-input" ng-model="attr.getterKey">
+                                </div>
+                                <div class="layui-input-inline">
+                                    <input type="text" lay-verify="title" autocomplete="off" placeholder="setter（1/0）" class="layui-input" ng-model="attr.setterKey">
+                                </div>
+                                <button class="layui-btn layui-btn-danger layui-btn-sm" ng-click="delAttr($index)">删除</button>
                             </div>
 
                             <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
@@ -79,15 +80,15 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="layui-form-item">
-                                <label class="layui-form-label">toString方法</label>
-                                <div class="layui-input-inline">
-                                    <select name="interest" lay-filter="toStringFilter">
-                                        <option value="1">是</option>
-                                        <option value="0">否</option>
-                                    </select>
-                                </div>
-                            </div>
+                            <!--<div class="layui-form-item">-->
+                                <!--<label class="layui-form-label">toString方法</label>-->
+                                <!--<div class="layui-input-inline">-->
+                                    <!--<select name="interest" lay-filter="toStringFilter">-->
+                                        <!--<option value="1">是</option>-->
+                                        <!--<option value="0">否</option>-->
+                                    <!--</select>-->
+                                <!--</div>-->
+                            <!--</div>-->
 
                             <!--<fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">-->
                             <!--<legend>内容编写</legend>-->
