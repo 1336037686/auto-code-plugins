@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Auto-Code-Plugins</title>
@@ -12,9 +12,8 @@
     <script src="../js/base.js"></script>
     <script src="../js/service/loginService.js"></script>
     <script src="../js/controller/loginController.js"></script>
-
 </head>
-<body ng-app="autocode" ng-controller="loginController" ng-init="entity={userName:'',password:''}">
+<body ng-app="autocode" ng-controller="loginController">
     <div class="layui-row">
         <div class="layui-col-md10 layui-col-md-offset1">
             <div class="layui-card layui-bg-blue">
@@ -37,24 +36,27 @@
                     <div class="layui-row">
                         <div class="layui-col-md12">
                             <!--表单开始-->
-                            <form class="layui-form layui-form-pane" style="padding-left: 20px;padding-right: 20px">
+                            <form class="layui-form layui-form-pane" style="padding-left: 20px;padding-right: 20px" th:action="@{/userLogin}" method="post">
                                 <div class="layui-form-item">
                                     <label class="layui-form-label layui-bg-green">用户名</label>
                                     <div class="layui-input-block">
-                                        <input type="text" name="userName" autocomplete="off" placeholder="请输入用户名" class="layui-input" ng-model="entity.userName">
+                                        <input type="text" name="username" autocomplete="off" placeholder="请输入用户名" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
                                     <label class="layui-form-label layui-bg-green">密码</label>
                                     <div class="layui-input-block">
-                                        <input type="password" name="password" placeholder="请输入密码" autocomplete="off" class="layui-input" ng-model="entity.password">
+                                        <input type="password" name="password" placeholder="请输入密码" autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
-                                    &nbsp;&nbsp;&nbsp;<button class="layui-btn layui-btn-fluid layui-bg-green" lay-submit="" lay-filter="demo2" ng-click="login()">登&nbsp;&nbsp;陆</button>
+                                    &nbsp;&nbsp;&nbsp;<button class="layui-btn layui-btn-fluid layui-bg-green" lay-filter="demo2" type="submit">登&nbsp;&nbsp;陆</button>
                                 </div>
+                                <!--表单结束-->
+                                <p th:if="${session.SPRING_SECURITY_LAST_EXCEPTION != null}">
+                                    <span style="color: red" th:text="${session.SPRING_SECURITY_LAST_EXCEPTION.message}"></span>
+                                </p>
                             </form>
-                            <!--表单结束-->
                         </div>
                     </div>
                 </div>

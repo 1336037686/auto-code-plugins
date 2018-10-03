@@ -1,13 +1,9 @@
 package com.lgxtvt.config;
 
-import com.lgxtvt.modules.app.filter.LoginFilter;
-import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-
-import java.util.Arrays;
 
 /**
  *
@@ -16,6 +12,8 @@ import java.util.Arrays;
  */
 @Configuration
 public class WebMvcConfig{
+
+    private final String PREFIX = "pages/";
 
     /**
      * 添加页面
@@ -26,25 +24,22 @@ public class WebMvcConfig{
         WebMvcConfigurer webMvcConfigurer = new WebMvcConfigurer(){
             @Override
             public void addViewControllers(ViewControllerRegistry registry) {
-                registry.addViewController("/index").setViewName("autoCodeLoginView");
-                registry.addViewController("/").setViewName("autoCodeLoginView");
-                registry.addViewController("/login.html").setViewName("autoCodeLoginView");
-                registry.addViewController("/login").setViewName("autoCodeLoginView");
-                registry.addViewController("/autoCodeIndexView").setViewName("autoCodeIndexView");
+                registry.addViewController("/login.html").setViewName(PREFIX + "autoCodeLoginView");
+                registry.addViewController("/").setViewName(PREFIX + "autoCodeLoginView");
+                registry.addViewController("/index").setViewName(PREFIX + "autoCodeIndexView");
             }
         };
         return webMvcConfigurer;
     }
 
-    /**
-     * 注册过滤器
-     */
-    @Bean
-    public FilterRegistrationBean<LoginFilter> loginFilter(){
-        FilterRegistrationBean<LoginFilter> loginFilter = new FilterRegistrationBean<>();
-        loginFilter.setFilter(new LoginFilter());
-        loginFilter.setUrlPatterns(Arrays.asList("/*"));
-        return loginFilter;
-    }
-
+//    /**
+//     * 注册过滤器
+//     */
+//    @Bean
+//    public FilterRegistrationBean<LoginFilter> loginFilter(){
+//        FilterRegistrationBean<LoginFilter> loginFilter = new FilterRegistrationBean<>();
+//        loginFilter.setFilter(new LoginFilter());
+//        loginFilter.setUrlPatterns(Arrays.asList("/*"));
+//        return loginFilter;
+//    }
 }

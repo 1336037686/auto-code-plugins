@@ -2,11 +2,9 @@
 package ${packagePosition};
 </#if>
 
-
 <#list importPackages as package>
 import java.util.${package};
 </#list>
-
 /**
  *
  * @author

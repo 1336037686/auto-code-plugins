@@ -4,7 +4,6 @@ app.controller("indexController",function ($controller,$scope,indexService,codeG
     $scope.getLoginUser = function () {
         indexService.getLoginUser().success(function(response){
             $scope.loginUser = response;
-            //
         });
     }
 

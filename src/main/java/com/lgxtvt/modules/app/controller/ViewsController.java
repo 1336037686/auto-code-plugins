@@ -11,5 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/views")
 public class ViewsController {
+    private final String PREFIX = "pages/";
 
 }
