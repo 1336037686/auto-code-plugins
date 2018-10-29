@@ -45,6 +45,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 //设置退出
                 .logout();
+
+        //关闭 CSRF 保护
+        http.csrf().disable();
     }
 
 
